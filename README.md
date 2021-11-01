@@ -10,7 +10,7 @@ or supply low discharge current. There are three options for these batteries
 
 **3. Dump** If the above options are not available or there is no incentive for above options battery could end up in trash.
 
-Which of these options will dominate depends on factors such as cost benifits, new battery supply, old battery supply, compatibility of batteries, regulations regarding reuse/recycling, etc.
+Which of these options will dominate depends on factors such as cost benefits, new battery supply, old battery supply, compatibility of batteries, regulations regarding reuse/recycling, etc.
 
 # Get Started
 
@@ -18,10 +18,10 @@ Which of these options will dominate depends on factors such as cost benifits, n
 | --- | -- | -- |
 | 01-extract-data  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/breathingcyborg/battery-cycle-life-prediction/blob/main/01-extract-data.ipynb) | Run this notebook before running other notebooks this notebook downloads data, transforms data and saves it to google drive |
 | 02-explore-data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/breathingcyborg/battery-cycle-life-prediction/blob/main/02-explore-data.ipynb) | Understand data, understand fast charging, find good features and implementation of model used by d3batt group |
-| 03-train-voltage-as-timesteps | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/breathingcyborg/battery-cycle-life-prediction/blob/main/03-train-voltage-as-timesteps.ipynb) | make and train model that uses second modelling approach mentioned above |
+| 03-train-voltage-as-timesteps | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/breathingcyborg/battery-cycle-life-prediction/blob/main/03-train-voltage-as-timesteps.ipynb) | make and train model that uses second modeling approach mentioned above |
 
 # Goal
-Before batteries are repaired and deploye for second use, we need information about how many cycles would this battery last. If battery is in good condition is could be used for moderate load applications otherwise it could be used for low load applications.
+Before batteries are repaired and deployed for second use, we need information about how many cycles would this battery last. If battery is in good condition is could be used for moderate load applications otherwise it could be used for low load applications.
 
 The repo provides machine learning model that predicts how many cycles the battery could last.
 
@@ -59,7 +59,7 @@ For each charging-discharging cycle we have
 2) One value for features like chargetime, internal resistance, average temperature.
 
 
-# Modelling approach
+# Modeling approach
 
 We have 20 charging cycles. For each cycle we have 2 features having 1000 measurements, and 3 features having 1 measurement. There are multiple ways to feed this data to a machine learning model.
 
@@ -77,7 +77,7 @@ The drawback of this approach is since the time series is extremely long model f
 
 ![Voltage Steps](images/voltage-steps.png)
 
-Instead of time steps we can think of data as having voltage steps. We have 1000 voltage steps in 2V-3.6V range. The values of features in each charging cycle can be interperted as feature. This instead of seeing timeseries as `(20000 steps, 2 features)` we see it as `(1000 steps, 40 features)` this makes time series shorter and thus easier to learn. 
+Instead of time steps we can think of data as having voltage steps. We have 1000 voltage steps in 2V-3.6V range. The values of features in each charging cycle can be interpreted as feature. This instead of seeing timeseries as `(20000 steps, 2 features)` we see it as `(1000 steps, 40 features)` this makes time series shorter and thus easier to learn. 
 
 If we look at features of single voltage step it will look like this 
 ```
@@ -103,7 +103,7 @@ for each charging cycle
 The extracted features are combined with summary features. This approach is used by this [medium article](https://towardsdatascience.com/predicting-battery-lifetime-with-cnns-c5e1faeecc8f)
 
 ## 4. Others
-There are lots of others ways like using simple linear regression model with hand crafted features. Extacting features from time series using Tsfresh, Catch22, or Rocket(random convolution) etc.
+There are lots of others ways like using simple linear regression model with hand crafted features. Extracting features from time series using Tsfresh, Catch22, or Rocket(random convolution) etc.
 
 
 # Results
@@ -153,4 +153,4 @@ The data was collected from brand new cells, thus calendar aging effect is absen
 * [Data-driven prediction of battery cycle life before capacity degradation](https://data.matr.io/1/projects/5c48dd2bc625d700019f3204) Paper which Provides the data.
 * [Paper Supplementary Info](https://static-content.springer.com/esm/art%3A10.1038%2Fs41560-019-0356-8/MediaObjects/41560_2019_356_MOESM1_ESM.pdf) for reference.
 * [Toyata Research For Battery Materials](https://data.matr.io/)
-* [Predicting battery lifetime with CNN](https://towardsdatascience.com/predicting-battery-lifetime-with-cnns-c5e1faeecc8f) the article that used the third modelling approach mentioned above.
+* [Predicting battery lifetime with CNN](https://towardsdatascience.com/predicting-battery-lifetime-with-cnns-c5e1faeecc8f) the article that used the third modeling approach mentioned above.
